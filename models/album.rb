@@ -22,8 +22,8 @@ class Album
 
   def update
     sql = "UPDATE albums SET (title, genre, artist_id) =
-          ('#{@title}', '#{@genre}', #{@artist_id}) 
-          WHERE id = #{@id};"
+    ('#{@title}', '#{@genre}', #{@artist_id}) 
+    WHERE id = #{@id};"
     SqlRunner.run(sql)
   end
 
@@ -51,6 +51,13 @@ class Album
     artist_array = SqlRunner.run(sql)
     return artist_array.map {|artist| Artist.new(artist)}
   end
+
+  def self.return_by_id(id_required)
+    sql = "SELECT * FROM albums WHERE id = #{id_required}"
+    albums_array = SqlRunner.run(sql)
+    return albums_array.map {|album| Album.new(album)}
+  end
+
 
 
 end

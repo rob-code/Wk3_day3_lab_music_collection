@@ -48,6 +48,11 @@ class Artist
     return album_array.map {|album| Album.new(album)}
   end
 
+  def self.return_by_id(id_required)
+    sql = "SELECT * FROM artists WHERE id = #{id_required}"
+    artists_array = SqlRunner.run(sql)
+    return artists_array.map {|artist| Artist.new(artist)}
+  end
 
 
 end
