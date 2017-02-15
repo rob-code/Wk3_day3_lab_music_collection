@@ -33,7 +33,7 @@ class Album
   end
 
   def self.all
-    sql "SELECT * FROM albums;"
+    sql = "SELECT * FROM albums;"
     albums_hashes = SqlRunner.run(sql)
     albums_array = albums_hashes.map do |album|
       Album.new(album)
